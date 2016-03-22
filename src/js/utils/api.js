@@ -13,12 +13,40 @@ const API = function(){
         errorExceptions = [];
 
 
-    function get(path){
+    // get FB ref
+    function ref(EP, id){
 
+        if(typeof id !== 'undefined' && id !== null){
+            return todoFbRef.child(EP.concat(id));
+        }
+
+        return todoFbRef.child(EP);
+    }
+
+
+    // retrieve data
+    //@return promise
+    function get(id, EP){
         return new Promise(function(resolve, reject){
             try{
-                let data = this.todoFbRef.child(path);
-                resolve(data);
+
+                todoFbRef.child(EP.concat(id)).on('value', function(dataSnapshot){
+
+                    let items = [];
+
+                    _.forEach(dataSnapshot, function(itemSnapshot){
+                        console.log(itemSnapshot.val());
+                        var item = itemSnapshot.val();
+
+                        item['.key'] = itemSnapshot.key();
+                        items.push(item);
+                    });
+
+                    // resolve the items
+                    resolve(items);
+
+                });
+
             }
             catch(e){
                 reject(e);
@@ -177,6 +205,7 @@ const API = function(){
 
 
     return {
+        ref,
         get,
         set,
         remove

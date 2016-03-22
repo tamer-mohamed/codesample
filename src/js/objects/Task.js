@@ -3,12 +3,23 @@ import TodoLogs from '../utils/logs';
 import API from '../utils/api';
 import EP from '../utils/constants';
 
+// ---------------------------------
+
 export default class Task {
 
 
-    constructor(){
+    constructor(opts){
 
-        this.attributes = {id: {required: true}, title: {required: true}, description};
+        if(!opts || !opts.todoID){
+            throw new Error('Todo ID is required to load the tasks.');
+        }
+
+        this.todoID = opts.todoID;
+        this.id = opts.id || null;
+
+        // @parivate
+        //-----------
+        this._attributes = {id: {required: true}, title: {required: true}};
     }
 
 
@@ -16,21 +27,21 @@ export default class Task {
 
     //-------------
 
-    get(id){
-        return API.get(id, EP.TASK);
+    ref(){
+        return API.ref(`${EP.TASK}${this.todoID}/`, this.id);
     }
-
-    add(task){
-        return API.set(task, EP.TASK, this.attributes);
-    }
-
-    remove(id){
-        return API.remove(id, EP.TASK);
-    }
-
-    update(id, data){
-        return API.update(id, EP.TASK);
-    }
+    //
+    //get(){
+    //    return API.get(`${EP.TASK}${this.todoID}/`, this.id);
+    //}
+    //
+    //add(task){
+    //    return API.set(task, EP.TASK, this._attributes);
+    //}
+    //
+    //remove(){
+    //    return API.remove(this.id, EP.TASK);
+    //}
 
 
 }

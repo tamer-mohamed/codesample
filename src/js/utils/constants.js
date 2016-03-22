@@ -1,8 +1,8 @@
 //END POINTS PATH
 
 const EP = {
-    TASK: '/tasks/',
-    TODO: '/todos/'
+    TASK: '/Tasks/',
+    TODO: '/Todos/'
 };
 
 export default EP;
