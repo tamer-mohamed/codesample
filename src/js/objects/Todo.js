@@ -13,19 +13,18 @@ export default class Todo {
         let options = opts || {};
 
         this.id = options.id || null;
-        this.data = options.data || null;
 
 
         // @private
         this._attributes = {
-            id: {required: true}, title: {required: true}, description, tasks
+            id: {required: true}, title: {required: true}
         };
 
     }
 
 
     list(){
-        return API.get(this.id, EP.TASK);
+        return API.ref(EP.TASK, this.id);
     }
 
 
@@ -34,34 +33,38 @@ export default class Todo {
         return task.add(data);
     }
 
-    markAsFinished(id){
+    markAsFinished(){
         let task = new Task();
-        return task.update(id, {finsihed: true});
+        return task.update(this.id, {finsihed: true});
     }
 
 
     undo(){
         let task = new Task();
-        return task.update(id, {finsihed: false});
-    }
-
-
-    //TODO: Adds the ability to create more than one todo list
-    create(fields){
-
+        return task.update(this.id, {finsihed: false});
     }
 
     get(){
-
+        return API.ref(EP.TODO, this.id);
     }
 
-    update(){
 
-    }
-
-    remove(){
-
-    }
+    //TODO: Add the ability to create more than one todo list, check below some methods
+    //create(fields){
+    //
+    //}
+    //
+    //get(){
+    //
+    //}
+    //
+    //update(){
+    //
+    //}
+    //
+    //remove(){
+    //
+    //}
 
 
 }

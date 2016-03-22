@@ -1,8 +1,6 @@
-
 /**
 * Task component which contains all the task info (title,icon-marker...etc)
 */
-
 @import "../settings";
 
 .task {
@@ -17,6 +15,18 @@
   .task__checkMarker {
     display: inline-block;
     vertical-align: middle;
+
+  }
+
+}
+
+.task--checked {
+  opacity: 0.5;
+
+  .marker {
+    background: $green;
+    border: 2px solid darken($green, 20%);
+    color: $white;
   }
 
 }
