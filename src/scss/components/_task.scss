@@ -2,6 +2,9 @@
 * Task component which contains all the task info (title,icon-marker...etc)
 */
 @import "../settings";
+@import "marker";
+
+$taskHeight: 63px;
 
 .task {
   padding: 0.8rem;
@@ -18,15 +21,40 @@
 
   }
 
-}
+  &.task--rightContent {
+    /* Large and up */
+    @media screen and (min-width: 64em) {
+      float: right;
+      margin: $taskHeight 0 0;
+      width: 50%;
+    }
+  }
 
-.task--checked {
-  opacity: 0.5;
+  &.task--leftContent {
+    /* Large and up */
+    @media screen and (min-width: 64em) {
+      float: left;
+      margin: 0 0 $taskHeight 0;
+      width: 50%;
+    }
 
-  .marker {
-    background: $green;
-    border: 2px solid darken($green, 20%);
-    color: $white;
   }
 
 }
+
+.task--checked {
+
+  .task__title {
+    opacity: 0.5;
+  }
+
+  .marker {
+    @include markerHoverState();
+
+    &:hover {
+      @include markerInitialState();
+    }
+  }
+
+}
+

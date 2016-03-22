@@ -21,7 +21,7 @@ console.log('APP LOADED ... ');
 
 
 ReactDOM.render(
-    <AppComponent/>,
+    <AppComponent todoID={1}/>,
     document.getElementById('todoApp')
 );
 

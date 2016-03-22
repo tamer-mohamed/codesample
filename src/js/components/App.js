@@ -7,8 +7,6 @@ import TaskControlComponent from './TaskControl';
 import TodoInfo from './TodoInfo';
 
 
-const TodoID = 1;
-
 var AppComponent = React.createClass({
 
     render: function(){
@@ -18,20 +16,21 @@ var AppComponent = React.createClass({
                     <div className="row">
 
                         <div className="small-12 columns">
-                            <TaskControlComponent todoID={TodoID} key={`taskControl-${TodoID}`}/>
+                            <TaskControlComponent todoID={this.props.todoID}
+                                                  key={`taskControl-${this.props.todoID}`}/>
                         </div>
 
 
                         <div className="small-12 columns border"/>
 
                         <div className="small-12 columns">
-                            <TodoInfo todoID={TodoID} key={`todoInfo-${TodoID}`}/>
+                            <TodoInfo todoID={this.props.todoID} key={`todoInfo-${this.props.todoID}`}/>
                         </div>
 
                         <div className="small-12 columns">
-                            <TodoComponent todoID={TodoID} key={`todoList-${TodoID}`}/>
+                            <TodoComponent todoID={this.props.todoID} key={`todoList-${this.props.todoID}`}/>
                         </div>
-                        <PostComponent todoID={TodoID}/>
+                        <PostComponent todoID={this.props.todoID}/>
                     </div>
                 </div>
             </div>

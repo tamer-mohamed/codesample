@@ -1,9 +1,10 @@
+var Promise = require('es6-promise').Promise;
+
+//--------------------------------
 import _ from 'lodash';
 import API from '../utils/api';
 import Task from './Task';
 import EP from '../utils/constants';
-
-//--------------------------------
 
 
 export default class Todo {
@@ -13,6 +14,7 @@ export default class Todo {
         let options = opts || {};
 
         this.id = options.id || null;
+        this.FBref = {info: this.ref(), tasks: this.ref()};
 
 
         // @private
@@ -22,9 +24,32 @@ export default class Todo {
 
     }
 
+    // use new ref ..
+    ref(){
+        return API.ref(EP.TASK, this.id);
+    }
 
+
+    // give back ref to list of the tasks
     list(){
         return API.ref(EP.TASK, this.id);
+    }
+
+    // mark all tasks as finished
+    markAllAsFinished(){
+        let _this = this;
+
+        return new Promise((resolve, reject)=>{
+
+            this.FBref.tasks.once('value', (dataSnapshot)=>{
+                dataSnapshot.forEach((task)=>{
+                    let taskFinished = new Task({id: task.key(), todoID: _this.id});
+                    taskFinished.update({isChecked: true});
+                    resolve();
+                })
+            })
+
+        });
     }
 
 

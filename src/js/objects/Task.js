@@ -5,6 +5,8 @@ import EP from '../utils/constants';
 
 // ---------------------------------
 
+var Promise = require('es6-promise').Promise;
+
 export default class Task {
 
 
@@ -16,6 +18,7 @@ export default class Task {
 
         this.todoID = opts.todoID;
         this.id = opts.id || null;
+        this.FBref = this.ref();
 
         // @parivate
         //-----------
@@ -30,6 +33,17 @@ export default class Task {
     ref(){
         return API.ref(`${EP.TASK}${this.todoID}/`, this.id);
     }
+
+    update(data){
+        return new Promise((resolve, reject)=>{
+            this.FBref.update(data, (error)=>{
+
+                error ? reject() : resolve();
+
+            });
+        })
+    }
+
     //
     //get(){
     //    return API.get(`${EP.TASK}${this.todoID}/`, this.id);
