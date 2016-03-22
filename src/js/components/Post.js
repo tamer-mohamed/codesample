@@ -3,6 +3,7 @@ var React = require('react');
 
 import Task from '../objects/Task';
 import debugLog from '../utils/logs';
+import Marker from './Marker';
 
 
 var PostComponent = React.createClass({
@@ -51,27 +52,24 @@ var PostComponent = React.createClass({
         }
     },
 
-    // create plus icon
-    createIcon: function(){
-        return '<i class="fa fa-plus"/>'
-    },
-
     render: function(){
         return (
             <div className="small-12 columns taskPublish">
                 <div className="row">
                     <form onSubmit={this.handleSubmit}>
                         <div className="small-11 columns taskPublish__input" onChange={this.onChange}>
-                            <input type="text" value={this.state.name} placeholder="Things I should do next..."/>
+                            <input type="text" value={this.state.name} onclick={this.handleSubmit}
+                                   placeholder="Things I should do next..."/>
                         </div>
 
                         <div className="small-1 columns text-right">
 
                             <div className="taskPost__submit">
-                                <input type="submit"
-                                       href="#"
-                                       onClick={this.handleSubmit} className="button">
-                                </input>
+                                <a
+                                    href="#"
+                                    onClick={this.handleSubmit} className="button">
+                                    <Marker/>
+                                </a>
                             </div>
 
                         </div>
