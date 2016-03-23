@@ -22,6 +22,13 @@ To install `npm` and `bower` dependencies
  
 ```
 
+### debuging 
+To turn on the debuging system, you need to set the following in the browser console
+
+```
+localStorage.todoDebug = 'true'
+```
+
 
 ### Test 
 Run unit tests 
@@ -44,7 +51,8 @@ Start the app locally
  
 
 ### Build
-Build dist of the app for prodution
+Build dist of the app for prodution, will be at `build` folder 
+
 ```
  gulp --prod
 

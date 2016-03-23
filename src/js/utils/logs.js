@@ -1,6 +1,4 @@
 // Logs module
-
-
 //--------------------------------
 
 const TodoLogs = function(){
