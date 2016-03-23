@@ -5,6 +5,15 @@ TODO app running using [Firebase!](http://firebase.com) and [ReactJs!](https://f
 
 ### installation
 
+- you need to install [nodejs!](https://nodejs.org/en/) in order to run the installment for node packages module dependcies.
+
+- Install `bower`
+
+```
+npm install -g bower
+
+```
+
 To install `npm` and `bower` dependencies
 
 ```
