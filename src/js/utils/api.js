@@ -6,6 +6,8 @@ import TodoLogs from './logs';
 var Promise = require('es6-promise').Promise;
 
 //--------------------------------
+// Abstract singleton pattern to connect with Firebase regarding set/update/delete/get data
+
 
 const API = function(){
 
