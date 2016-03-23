@@ -4,28 +4,39 @@
 module.exports = function(config){
     config.set({
 
+        // frameworks to use
+        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        frameworks: ['mocha', 'chai', 'browserify'],
+
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        preprocessors: {
+            //'src/js/**/*.js': ['browserify'],
+            'src/tests/**/*.js': ['browserify']
+        },
 
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha'],
+        "browserify": {
+            "transform": [
+                [
+                    "babelify",
+                    {presets: ["es2015", "react"]}
+                ]
+            ]
+        },
 
 
         // list of files / patterns to load in the browser
         files: [
-            'tests/**/*.js'
+            //'src/js/**/*.js',
+            'src/tests/*.js'
         ],
 
 
         // list of files to exclude
         exclude: [],
-
-
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {},
 
 
         // test results reporter to use

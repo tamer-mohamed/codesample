@@ -1,17 +1,17 @@
-import Todo from '../js/objects/Todo';
+import Task from '../js/objects/Task';
 
 //-------------------------
 
-describe('Todo class functionality', function(){
+describe('Task class functionality', function(){
 
-    let TodoInstance;
+    let TaskInstance;
 
     beforeEach(()=>{
-        TodoInstance = new Todo({id: 1});
+        TaskInstance = new Task({todoID: 1});
     });
 
-    it('should return object of data tasks', (done)=>{
-        TodoInstance.FBref.tasks.once('value', (data)=>{
+    it('should return object', (done)=>{
+        TaskInstance.FBref.tasks.once('value', (data)=>{
             let tasks = data.val();
             if(tasks){
                 expect(tasks).to.be.a('object');
@@ -25,13 +25,13 @@ describe('Todo class functionality', function(){
     });
 
     it('should mark all finished', (done)=>{
-        TodoInstance.markAllAsFinished().then(()=>{
+        TaskInstance.markAllAsFinished().then(()=>{
             done();
         })
     });
 
     it('should mark all finished', (done)=>{
-        TodoInstance.markAllAsFinished().then(()=>{
+        TaskInstance.markAllAsFinished().then(()=>{
             done();
         })
     });
