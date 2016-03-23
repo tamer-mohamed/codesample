@@ -4,14 +4,10 @@
  * Foundation for Sites by ZURB
  * Version 6.1.1
  */
-
 @import "bourbon";
 @import "settings";
+@import "sweetalert";
 @import "../../node_modules/foundation-sites/scss/foundation";
-
-
-
-
 @import './utils';
 @import './components/task';
 @import './components/marker';
@@ -19,7 +15,6 @@
 @import './components/taskPublish';
 @import './components/tasksControl';
 @import './components/listHeader';
-
 
 // include all foundation modules
 @include foundation-everything;

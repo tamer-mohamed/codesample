@@ -16,6 +16,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var prod = gutil.env.prod;
+var karmaServer = require('karma').Server;
 
 var onError = function(err){
     console.log(err.message);
@@ -39,12 +40,8 @@ function bundle(){
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init())
-        //.pipe(babel({
-        //    presets: ['es2015', 'react']
-        //}))
         .pipe(concat('bundle.js'))
         .pipe(sourcemaps.write('.'))
-        .pipe(prod ? streamify(uglify()) : gutil.noop())
         .pipe(gulp.dest('./build/js'))
         .pipe(browserSync.stream());
 }
@@ -82,6 +79,18 @@ gulp.task('serve', function(){
     gulp.watch('./src/templates/**/*', ['html']);
     gulp.watch('./src/scss/**/*.scss', ['sass']);
 });
+
+
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function(done){
+    new karmaServer({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start();
+});
+
 
 // use gulp-sequence to finish building html, sass and js before first page load
 gulp.task('default', gulpSequence(['html', 'sass', 'js'], 'serve'));
