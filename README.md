@@ -1,4 +1,4 @@
-# Realtime TODO Code sample
+# Realtime TODO
 
 TODO app running using [Firebase!](http://firebase.com) and [ReactJs!](https://facebook.github.io/react/)
 
