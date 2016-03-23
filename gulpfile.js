@@ -40,12 +40,8 @@ function bundle(){
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init())
-        //.pipe(babel({
-        //    presets: ['es2015', 'react']
-        //}))
         .pipe(concat('bundle.js'))
         .pipe(sourcemaps.write('.'))
-        .pipe(prod ? streamify(uglify()) : gutil.noop())
         .pipe(gulp.dest('./build/js'))
         .pipe(browserSync.stream());
 }

@@ -13,14 +13,15 @@ export default class Task {
     constructor(opts){
 
         if(!opts || !opts.todoID){
-            throw new Error('Todo ID is required to load the tasks.');
+            throw 'Todo ID is required to load the tasks.';
         }
 
         this.todoID = opts.todoID;
         this.id = opts.id || null;
         this.FBref = this.ref();
 
-        // @parivate
+        // @private
+        // to be used for required attributes
         //-----------
         this._attributes = {id: {required: true}, title: {required: true}};
     }
