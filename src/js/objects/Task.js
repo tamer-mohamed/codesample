@@ -27,8 +27,7 @@ export default class Task {
     }
 
 
-    // CRUD
-
+    // Methods
     //-------------
 
     ref(){
@@ -45,18 +44,9 @@ export default class Task {
         })
     }
 
-    //
-    //get(){
-    //    return API.get(`${EP.TASK}${this.todoID}/`, this.id);
-    //}
-    //
-    //add(task){
-    //    return API.set(task, EP.TASK, this._attributes);
-    //}
-    //
-    //remove(){
-    //    return API.remove(this.id, EP.TASK);
-    //}
+    remove(){
+        return API.remove(this.id, EP.TASK);
+    }
 
 
 }
