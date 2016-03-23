@@ -44,7 +44,8 @@ Start the app locally
  
 
 ### Build
-Build dist of the app for prodution
+Build dist of the app for prodution, will be at `build` folder 
+
 ```
  gulp --prod
 
