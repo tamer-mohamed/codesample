@@ -1,9 +1,9 @@
-# TODO Code sample
+# Realtime TODO Code sample
 
 TODO app running using [Firebase!](http://firebase.com) and [ReactJs!](https://facebook.github.io/react/)
 
 
-### installation
+### Installation
 
 - you need to install [nodejs!](https://nodejs.org/en/) in order to run the installment for node packages module dependcies.
 
@@ -22,7 +22,7 @@ To install `npm` and `bower` dependencies
  
 ```
 
-### debuging 
+### Debuging 
 To turn on the debuging system, you need to set the following in the browser console
 
 ```
